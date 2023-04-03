@@ -1,24 +1,4 @@
-# Steps represent a sequence of tasks that will be executed as part of the job
-steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    - name: init
-      run: terraform init
-      
-    - name: Download a single artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: tfplan
-
-    - uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.3.7
-        
-    - name: apply
-      run: terraform apply tfplan
-      
-needs: [init_plan]
+name: Terraform apply
 
     - uses: actions/checkout@v2
 
